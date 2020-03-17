@@ -1,2 +1,2 @@
 # ui5-rickandmorty
-SAPUI5 project that shows all Rick and Morty characters.
+[SAPUI5](https://sapui5.hana.ondemand.com) project that consumes [Rick and Mort API](https://rickandmortyapi.com) to show all the characters, which can be searched by name and then further information is displayed after clicking the listed entry.

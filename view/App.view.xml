@@ -6,11 +6,11 @@
 					
 				<SearchField xmlns="sap.m" value="{model:'view', path:'/searchTerm'}" placeholder="Digite o nome do personagem" search="onSearch" id="field0"/>
 					
-				<List noDataText="Nenhum personagem a ser exibido." items="{/results}" id="list2">
+				<List noDataText="Nenhum personagem a ser exibido." growing="true" growingScrollToLoad="true" growingThreshold="50" items="{/charData}" id="list2">
 					
 				    <items>
 					
-				        <StandardListItem type="Navigation" title="{name}" description="{status}" icon="{image}"/>
+				        <StandardListItem type="Navigation" title="{name}" description="From: {origin/name}" icon="{image}"/>
 					
 				    </items>
 					

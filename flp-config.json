@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "Rick and Morty Database",
+        "description": "The app shows information on all Rick and Morty show characters",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#ui5rickandmorty-Display",
+        "navigationComponentName": "sap.ui.rickandmorty",
+        "intentSemanticObject": "ui5-rickandmorty",
+        "intentAction": "Display",
+        "html5ApplicationName": "ui5rickandmorty",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "cbf04059-495b-4477-b73c-07c3612769c9"
+        ],
+        "contentPackages": [
+            "985cff4f-6948-43a0-a233-b932d1073255"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Rick and Morty Database",
+        "subtitle": "Navigate through the app to check information on all Rick and Morty show characters",
+        "searchKeywords": "Rick and Morty Database,Navigate through the app to check information on all Rick and Morty show characters",
+        "displayIconUrl": "sap-icon://business-card",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

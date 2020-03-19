@@ -6,30 +6,28 @@ sap.ui.define([
 		
 		return UIComponent.extend("sap.ui.rickandmorty.Component", {
 			metadata: {
-				rootView: {
-					"viewName":"sap.ui.rickandmorty.view.App",
-					"type":"XML",
-					"async":true,
-					"id":"app"
-				}
+				manifest: "json"
 			},
 				
 			init: function () {
 				
 				UIComponent.prototype.init.apply(this, arguments);
 				
-				var oTemp = {
-					charData: []
-				};
+				// var oTemp = {
+				// 	charData: []
+				// };
 				
-				var oModel = new JSONModel(oTemp);
-				this.setModel(oModel);
+				// var oModel = new JSONModel(oTemp);
+				// this.setModel(oModel);
 				
-				var oViewModel = new JSONModel ({
-					searchTerm: "",
-					busy: false
-				});
-				this.setModel(oViewModel, "view");
+				// var oViewModel = new JSONModel ({
+				// 	searchTerm: "",
+				// 	busy: false
+				// });
+				// this.setModel(oViewModel, "view");
+				
+				this.getRouter().initialize();
+				
 			}
 		});
 	});

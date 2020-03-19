@@ -1,23 +1,5 @@
-<mvc:View controllerName="sap.ui.rickandmorty.controller.App" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
-	<App>
-		<pages>
-			<Page title="Rick and Morty info">
-				<content>
-					
-				<SearchField xmlns="sap.m" value="{model:'view', path:'/searchTerm'}" placeholder="Digite o nome do personagem" search="onSearch" id="field0"/>
-					
-				<List noDataText="Nenhum personagem a ser exibido." growing="true" growingScrollToLoad="true" growingThreshold="50" items="{/charData}" id="list2">
-					
-				    <items>
-					
-				        <StandardListItem type="Navigation" title="{name}" description="From: {origin/name}" icon="{image}"/>
-					
-				    </items>
-					
-				</List>
-					
-				</content>
-			</Page>
-		</pages>
-	</App>
+<mvc:View controllerName="sap.ui.rickandmorty.controller.App" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+	<Shell>
+		<App id="app"/>
+	</Shell>
 </mvc:View>

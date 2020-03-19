@@ -1,0 +1,19 @@
+<mvc:View controllerName="sap.ui.rickandmorty.controller.Home" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<Page title="Rick and Morty info" class="sapUiResponsiveContentPadding">
+		<content>
+					
+			<SearchField xmlns="sap.m" value="{model:'view', path:'/searchTerm'}" placeholder="Digite o nome do personagem" search="onSearch" id="field0"/>
+					
+			<List noDataText="Nenhum personagem a ser exibido." growing="true" growingScrollToLoad="true" growingThreshold="50" items="{/charData}" itemPress="onItemPress" id="list2">
+					
+			    <items>
+					
+			        <StandardListItem type="Navigation" title="{name}" description="From: {origin/name}" icon="{image}"/>
+					
+			    </items>
+					
+			</List>
+					
+		</content>
+	</Page>
+</mvc:View>

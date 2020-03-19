@@ -1,0 +1,10 @@
+<mvc:View controllerName="sap.ui.rickandmorty.controller.CharDetail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"><Page id="charDetail" title="Character Details" showNavButton="true" navButtonPress=".onNavBack" class="sapUiResponsiveContentPadding">
+	<content>
+	    <FlexBox width="100%" id="box0" alignItems="Center" justifyContent="Center">
+	        <items>
+	            <Image src="https://ui5.sap.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png" width="300px" height="300px" id="image0"/>
+	        </items>
+	    </FlexBox>
+	</content>
+	</Page>
+</mvc:View>

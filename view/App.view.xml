@@ -1,5 +1,17 @@
 <mvc:View controllerName="sap.ui.rickandmorty.controller.App" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
 	<Shell>
-		<App id="app"/>
+		<!--<App id="app">-->
+		<!--	<pages>-->
+				
+		<!--	</pages>-->
+		<!--</App>	-->
+		<SplitApp id="app">
+			<masterPages>
+				
+			</masterPages>
+			<detailPages>
+				
+			</detailPages>
+		</SplitApp>
 	</Shell>
 </mvc:View>

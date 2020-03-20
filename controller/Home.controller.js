@@ -74,9 +74,12 @@ sap.ui.define([
 			},
 			
 			onItemPress: function (oEvent) {
-				//var oItem = oEvent.getSource();
+				var oItem = oEvent.getParameters().listItem;
+				var oCtx = oItem.getBindingContext();
 				
-				this.getRouter().navTo("charDetail", {}, true);
+				this.getRouter().navTo("charDetail", {
+					id: oCtx.getProperty("id")
+				});
 			}
 		});
 	});

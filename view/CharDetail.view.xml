@@ -1,8 +1,13 @@
 <mvc:View controllerName="sap.ui.rickandmorty.controller.CharDetail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"><Page id="charDetail" title="Character Details" showNavButton="true" navButtonPress=".onNavBack" class="sapUiResponsiveContentPadding">
 	<content>
-	    <FlexBox width="100%" id="box0" alignItems="Center" justifyContent="Center">
+	    <FlexBox width="100%" id="box0" alignItems="Center" justifyContent="Center" wrap="Wrap">
 	        <items>
-	            <Image src="https://ui5.sap.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png" width="300px" height="300px" id="image0"/>
+	            <Label xmlns="sap.m" text="{/name}" width="100%" textAlign="Center" wrapping="true" class="bigLabel" design="Bold" id="label0"/>
+	        </items>
+	    </FlexBox>
+	    <FlexBox width="100%" id="box1" alignItems="Center" justifyContent="Center">
+	        <items>
+	            <Image src="{/image}" id="image0"/>
 	        </items>
 	    </FlexBox>
 	</content>

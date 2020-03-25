@@ -1,15 +1,140 @@
-<mvc:View controllerName="sap.ui.rickandmorty.controller.CharDetail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"><Page id="charDetail" title="Character Details" showNavButton="true" navButtonPress=".onNavBack" class="sapUiResponsiveContentPadding">
-	<content>
-	    <FlexBox width="100%" id="box0" alignItems="Center" justifyContent="Center" wrap="Wrap">
-	        <items>
-	            <Label xmlns="sap.m" text="{/name}" width="100%" textAlign="Center" wrapping="true" class="bigLabel" design="Bold" id="label0"/>
-	        </items>
-	    </FlexBox>
-	    <FlexBox width="100%" id="box1" alignItems="Center" justifyContent="Center">
-	        <items>
-	            <Image src="{/image}" id="image0"/>
-	        </items>
-	    </FlexBox>
-	</content>
-	</Page>
+<mvc:View controllerName="sap.ui.rickandmorty.controller.CharDetail" xmlns:m="sap.m" xmlns="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
+	<m:Page
+		title="Character Detail"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+	<ObjectPageLayout id="ObjectPageLayout"
+		showTitleInHeaderContent="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+
+				<expandedHeading>
+						<m:Title text="{personal>/name}" wrapping="true"/>
+				</expandedHeading>
+
+				<snappedHeading>
+					<m:FlexBox  fitContainer="true" alignItems="Center">
+						<m:Avatar src="{personal>/image}" class="sapUiTinyMarginEnd"/>
+						<m:Title text="{personal>/name}" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+
+				<expandedContent>
+					<m:Text text="From {personal>/origin/name}"/>
+				</expandedContent>
+
+				<snappedContent>
+					<m:Text text="From {personal>/origin/name}"/>
+				</snappedContent>
+				
+				<actions>
+					<m:Button text="Favorite" press="onPressFavorite"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<m:Avatar class="sapUiSmallMarginEnd" src="{personal>/image}"  displaySize="L" />
+
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+							<m:Label text="Specie:" design="Bold"/>
+							<m:Label text="{personal>/species}"/>
+						</layout:HorizontalLayout>
+						<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+							<m:Label text="Gender: " design="Bold"/>
+							<m:Label text=" {personal>/gender}"/>
+						</layout:HorizontalLayout>
+						<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+						<m:Label text="Status:" design="Bold"/>
+						<m:Label text="{personal>/status}"/>
+					</layout:HorizontalLayout>
+					</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					
+				</layout:VerticalLayout>
+				
+				<!--<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">-->
+				<!--	<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">-->
+				<!--		<m:Label text="Status:" design="Bold"/>-->
+				<!--		<m:Label text="{personal>/status}"/>-->
+				<!--	</layout:HorizontalLayout>-->
+				<!--</layout:VerticalLayout>-->
+			</m:FlexBox>
+		</headerContent>
+		
+		<sections>
+			<ObjectPageSection id="originSection" title="Origin">
+				<subSections>
+					<ObjectPageSubSection id="OriginSubSection">
+						<blocks>
+							<m:Label text="Type:" design="Bold"/>
+							<m:Label text="{model:'origin',path:'/type'}"/>
+							<m:Label text="Name:" design="Bold"/>
+							<m:Label text="{model:'origin',path:'/name'}"/>
+							<m:Label text="Dimension:" design="Bold"/>
+							<m:Label text="{model:'origin',path:'/dimension'}"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection id="locationSection" title="location">
+				<subSections>
+					<ObjectPageSubSection id="locationSubSection">
+						<blocks>
+							<m:Label text="Type:" design="Bold"/>
+							<m:Label text="{model:'location',path:'/type'}"/>
+							<m:Label text="Name:" design="Bold"/>
+							<m:Label text="{model:'location',path:'/name'}"/>
+							<m:Label text="Dimension:" design="Bold"/>
+							<m:Label text="{model:'location',path:'/dimension'}"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection id="episodesSection" title="episodes">
+				<subSections>
+					<ObjectPageSubSection id="episodesSubSection">
+						<m:Table noDataText="Nenhum episódio a ser exibido." busy="false" id="epTable" items="{/episodeData}">
+							<m:items>
+								<m:ColumnListItem>
+									<m:cells>
+										<m:Text text="{episode}"/>
+										<m:Text text="{name}"/>
+										<m:Text text="{air_date}"/>
+									</m:cells>
+								</m:ColumnListItem>
+							</m:items>
+							
+							<m:columns>
+								<m:Column id="column0">
+									<m:header>
+										<m:Label text="Episode" id="label0"/>
+									</m:header>
+								</m:Column>
+								
+								<m:Column id="column1">
+									<m:header>
+										<m:Label text="Name" id="label1"/>
+									</m:header>
+								</m:Column>
+								
+								<m:Column id="column2">
+									<m:header>
+										<m:Label text="Air Date" id="label2"/>
+									</m:header>
+								</m:Column>
+							</m:columns>
+							
+						</m:Table>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+	</m:Page>
 </mvc:View>

@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/rickandmorty/controller/BaseController",
-	"sap/ui/model/json/JSONModel"
-	], function (BaseController, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/m/MessageToast"
+	], function (BaseController, JSONModel, MessageToast) {
 		"use strict";
 		
 		return BaseController.extend("sap.ui.rickandmorty.controller.Home", {
@@ -30,34 +31,40 @@ sap.ui.define([
 			
 			onRequestCompleted: function(oEvt){
 				
-				this.getView().getModel("view").setProperty("/busy", true);
+				this.getView().getModel("view").setProperty("/busy", false);
 				
-				var iNumChar = parseInt(this._oModel.getProperty("/info/count"),10);
-				var oCharArray = this._oModel.getProperty("/charData");
-				var iElements = 20;
-				
-				if(this._oModel.getProperty("/info/next") === "") iElements = iNumChar % 20;
-				
-				for(var i = 0; i < iElements; i++){
-					oCharArray.push({
-						id:this._oModel.getProperty("/results/" + i + "/id"),
-						name:this._oModel.getProperty("/results/" + i + "/name"),
-						status:this._oModel.getProperty("/results/" + i + "/status"),
-						species:this._oModel.getProperty("/results/" + i + "/species"),
-						type:this._oModel.getProperty("/results/" + i + "/type"),
-						gender:this._oModel.getProperty("/results/" + i + "/gender"),
-						origin:this._oModel.getProperty("/results/" + i + "/origin"),
-						location:this._oModel.getProperty("/results/" + i + "/location"),
-						image:this._oModel.getProperty("/results/" + i + "/image"),
-						episode:this._oModel.getProperty("/results/" + i + "/episode"),
-						url:this._oModel.getProperty("/results/" + i + "/url")
-					});
+				if(oEvt.getParameters().success && !this._oModel.getProperty("/erro")){
+					var iNumChar = parseInt(this._oModel.getProperty("/info/count"),10);
+					var oCharArray = this._oModel.getProperty("/charData");
+					var iElements = 20;
+					
+					if(this._oModel.getProperty("/info/next") === "") iElements = iNumChar % 20;
+					
+					for(var i = 0; i < iElements; i++){
+						oCharArray.push({
+							id:this._oModel.getProperty("/results/" + i + "/id"),
+							name:this._oModel.getProperty("/results/" + i + "/name"),
+							status:this._oModel.getProperty("/results/" + i + "/status"),
+							species:this._oModel.getProperty("/results/" + i + "/species"),
+							type:this._oModel.getProperty("/results/" + i + "/type"),
+							gender:this._oModel.getProperty("/results/" + i + "/gender"),
+							origin:this._oModel.getProperty("/results/" + i + "/origin"),
+							location:this._oModel.getProperty("/results/" + i + "/location"),
+							image:this._oModel.getProperty("/results/" + i + "/image"),
+							episode:this._oModel.getProperty("/results/" + i + "/episode"),
+							url:this._oModel.getProperty("/results/" + i + "/url")
+						});
+					}
+					this._oModel.setProperty("/charData", oCharArray);
+					
+					if(this._oModel.getProperty("/info/next") !== ""){
+						var sNextUrl = this._oModel.getProperty("/info/next");
+						this._oModel.loadData(sNextUrl, null, true, "GET", true);
+					}
 				}
-				this._oModel.setProperty("/charData", oCharArray);
 				
-				if(this._oModel.getProperty("/info/next") !== ""){
-					var sNextUrl = this._oModel.getProperty("/info/next");
-					this._oModel.loadData(sNextUrl, null, true, "GET", true);
+				if(!oEvt.getParameters().success || this._oModel.getProperty("/erro")){
+					MessageToast.show("Personagem não encontrado.");
 				}
 			},
 			
